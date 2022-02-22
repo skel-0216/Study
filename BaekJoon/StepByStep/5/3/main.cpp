@@ -30,5 +30,5 @@ int main()
     {
         cout << cnt[i] << endl;
     }
-
+    return 0;
 }
