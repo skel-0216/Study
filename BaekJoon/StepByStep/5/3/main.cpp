@@ -1,34 +1,42 @@
 #include <iostream>
+#include <vector>
 
-using namespace std;
+bool check_hans(int a);
 
 int main()
 {
-    int result = 1;
+    int input;
+    std::cin >> input;
 
-    for(int i = 0; i < 3; i++)
+    int cnt = 0;
+    for(int i = 1; i <= input; i++)
     {
-        int temp;
-        cin >> temp;
-
-        result *= temp;
+        if(check_hans(i))
+            cnt++;
     }
-
-    int cnt[10];
-
-    for(int i = 0; i < 10; i++)
-        cnt[i] = 0;
-
-    while(result > 0)
-    {
-        int temp = result % 10;
-        result /= 10;
-        cnt[temp] += 1; 
-    }
-
-    for(int i = 0; i < 10; i++)
-    {
-        cout << cnt[i] << endl;
-    }
+    printf("%d\n", cnt);
     return 0;
+}
+
+bool check_hans(int a)
+{
+    int temp = a;
+    std::vector<int> list;
+    while(temp > 0)
+    {
+        list.push_back(temp%10);
+        temp /= 10;
+    }
+
+    if(list.size() <= 1)
+        return true;
+
+    int gap = list.at(0) - list.at(1);
+    for(int i = 1; i < list.size() - 1; i++)
+    {
+        if(gap != (list.at(i) - list.at(i + 1)))
+            return false;
+    }
+
+    return true;
 }

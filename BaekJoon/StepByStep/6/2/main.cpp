@@ -1,37 +1,20 @@
 #include <iostream>
 
-int d(int a);
-
-
 int main()
 {
-    bool* list = new bool[10000];
-    for(int i = 0; i < 10000; i++)
-    {
-        list[i] = true;
-    }
-    for(int i = 0; i < 10000; i++)
-    {
-        if(d(i) < 10000)
-            list[d(i)] = false;
-        else
-            continue;
-    }
+	int input_;
+	int sum = 0;
 
-    for(int i = 0; i < 10000; i++)
-        if(list[i] == true)
-            printf("%d\n", i);
+	std::cin >> input_;
 
-    return 0;
-}
+	char* str_ = new char[input_];
 
-int d(int a)
-{
-    int temp = a;
-    while(temp > 0)
-    {
-        a += temp % 10;
-        temp /= 10;
-    }
-    return a;
+	std::cin >> str_;
+
+	for (int i = 0; i < input_; i++)
+	{
+		sum += (str_[i] - '0');
+	}
+
+	std::cout << sum << std::endl;
 }

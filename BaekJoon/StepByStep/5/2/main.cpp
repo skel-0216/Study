@@ -1,23 +1,37 @@
 #include <iostream>
 
-using namespace std;
+int d(int a);
+
 
 int main()
 {
-    int input, index = 0;
-    int temp_max = INT32_MIN;
-
-    for(int i = 0; i < 9; i++)
+    bool* list = new bool[10000];
+    for(int i = 0; i < 10000; i++)
     {
-        cin >> input;
-        if(input > temp_max)
-        {
-            index = i + 1;
-            temp_max = input;
-        }
+        list[i] = true;
+    }
+    for(int i = 0; i < 10000; i++)
+    {
+        if(d(i) < 10000)
+            list[d(i)] = false;
+        else
+            continue;
     }
 
-    printf("%d\n%d\n", temp_max, index);
+    for(int i = 0; i < 10000; i++)
+        if(list[i] == true)
+            printf("%d\n", i);
 
     return 0;
+}
+
+int d(int a)
+{
+    int temp = a;
+    while(temp > 0)
+    {
+        a += temp % 10;
+        temp /= 10;
+    }
+    return a;
 }
