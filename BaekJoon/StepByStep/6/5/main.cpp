@@ -63,5 +63,6 @@ int main()
         cout << "?" << endl;
     else
         cout << char('A' + pos) << endl;
+
     return 0;
 }
